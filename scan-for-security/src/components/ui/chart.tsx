@@ -28,3 +28,23 @@ export function useChart() {
 
   return context;
 }
+import * as React from "react";
+import * as RechartsPrimitive from "recharts";
+import { cn } from "@/lib/utils";
+import { useChart } from "./chart-context";
+import { getPayloadConfigFromPayload } from "./chart-utils";
+
+export const ChartTooltip = RechartsPrimitive.Tooltip;
+
+export const ChartTooltipContent = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
+    React.ComponentProps<"div"> & {
+      hideLabel?: boolean;
+      hideIndicator?: boolean;
+      indicator?: "line" | "dot" | "dashed";
+      nameKey?: string;
+      labelKey?: string;
+    }
+>(/* SAME BODY — UNCHANGED */);
+ChartTooltipContent.displayName = "ChartTooltip";
